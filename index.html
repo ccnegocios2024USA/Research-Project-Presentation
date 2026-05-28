@@ -244,3 +244,73 @@
         </div>
         <div class="page-citation">Source: QuickFacts: Yakima city, Washington - U.S. Census Bureau (2025)</div>
     </div>
+
+    <div class="slide-container" id="slide11">
+        <h2 class="slide-title">Culture, Traditions, and Celebrations</h2>
+        <div class="content-area">
+            <p>Guerrerense families actively enrich the Pacific Northwest by organizing traditional regional patron saint celebrations, regional string and brass music performances, and ancestral culinary gatherings. A core element of this resistance is the kitchen, where authentic southern dishes like the traditional green and white <em>Pozole Guerrerense</em> act as vital cultural anchor points.</p>
+            <p style="margin-top: 15px;">Concurrently, indigenous linguistic heritage is preserved through active use within multilinguistic homes, alongside civic participation in public cultural events. These practices ensure new generations maintain an active link to their cultural ancestry while thriving in American academia.</p>
+        </div>
+        <div class="page-citation">Source: WSU Libraries Digital Collections & Community Field Profiles</div>
+    </div>
+
+    <div class="slide-container" id="slide12" style="text-align: center; justify-content: center; background-color: #f8fafc;">
+        <h2 style="font-size: 38px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px;">CONCLUSION</h2>
+        <p style="font-family: 'Merriweather', serif; font-size: 26px; color: #4A000B; max-width: 1050px; margin: 0 auto; line-height: 1.5; text-align: center;">
+            The Guerrerense community has carved an indelible impact onto the Yakima Valley. What initiated as structural migration driven by farm labor requirements has evolved into a resilient, organized community that commands a vital presence in the regional economy, local educational frameworks, and civic life.
+        </p>
+        <p style="margin-top: 35px; font-weight: 500; font-size: 20px; color: #64748b; text-align: center;">Despite structural inequities, these families successfully safeguarded their heritage while building sustainable socio-economic opportunities for future generations.</p>
+        <div class="page-citation">ETHS 101 Final Synthesis Presentation</div>
+    </div>
+
+    <div class="slide-container" id="slide13">
+        <h2 class="slide-title" style="text-transform: uppercase;">REFERENCES</h2>
+        <div class="content-area">
+            <ul style="padding-left: 20px; font-size: 18px; line-height: 1.7; color: #334155; list-style-type: square;">
+                <li><strong>Migration Policy Institute.</strong> <em>Mexican Immigrants in the United States.</em> Analysis of southern Mexican migration streams and regional labor dynamics in the Pacific Northwest.</li>
+                <li style="margin-top: 10px;"><strong>WSU Libraries Digital Collections, CONTENTdm. (2026).</strong> WSU.edu. Evaluation of regional agricultural overviews and historical labor distributions: <span style="font-size:15px; color:#AD1128;">https://content.libraries.wsu.edu/digital/collection/cchm/custom/ma-overview</span></li>
+                <li style="margin-top: 10px;"><strong>mvickers. (2023, October 6).</strong> <em>A History of Latino(a) Leaders in the Yakima Valley - Part 1.</em> Yakima Valley Libraries: <span style="font-size:15px; color:#AD1128;">https://www.yvl.org/a-history-of-latinoa-leaders-in-the-yakima-valley-part-1/</span></li>
+                <li style="margin-top: 10px;"><strong>USDA - National Agricultural Statistics Service Homepage. (2022).</strong> Economic indicators and national crop production data indexes for hops and fruits: <span style="font-size:15px; color:#AD1128;">https://www.nass.usda.gov/</span></li>
+                <li style="margin-top: 10px;"><strong>QuickFacts: Yakima city, Washington. (2025).</strong> United States Census Bureau. Demographic profiles and official population indicators: <span style="font-size:15px; color:#AD1128;">https://www.census.gov/quickfacts/fact/table/yakimacitywashington/PST045225</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="nav-btn" onclick="changeSlide(-1)"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+        <button class="nav-btn" onclick="goToHome()"><i class="fa-solid fa-house"></i> Home</button>
+        <button class="nav-btn" onclick="changeSlide(1)">Next <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+
+</div>
+
+<script>
+    let currentSlide = 1;
+    const totalSlides = 13;
+
+    function changeSlide(n) {
+        document.getElementById('slide' + currentSlide).classList.remove('active');
+        currentSlide += n;
+        if (currentSlide > totalSlides) currentSlide = 1;
+        if (currentSlide < 1) currentSlide = totalSlides;
+        document.getElementById('slide' + currentSlide).classList.add('active');
+        
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function goToHome() {
+        document.getElementById('slide' + currentSlide).classList.remove('active');
+        currentSlide = 1;
+        document.getElementById('slide' + currentSlide).classList.add('active');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "ArrowRight") changeSlide(1);
+        if (e.key === "ArrowLeft") changeSlide(-1);
+        if (e.key === "Home") goToHome();
+    });
+</script>
+
+</body>
+</html>
