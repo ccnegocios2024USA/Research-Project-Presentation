@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 1. CORE DESIGN & AUTO-ZOOM FIT SCREEN */
         :root {
             --yvc-burgundy: #AD1128;
             --yvc-navy: #00487B;
@@ -17,21 +16,17 @@
             --bg-slide: #FFFDF9;
             --text-dark: #2C3E50;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body { 
-            background-color: var(--bg-canvas); 
-            font-family: 'DM Sans', sans-serif; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh; 
-            overflow: hidden; 
+        body {
+            background-color: var(--bg-canvas);
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
         }
-
-        /* Responsive scaling container to automatically fit the screen */
         .presentation-viewport {
             width: 1280px;
             height: 720px;
@@ -39,298 +34,321 @@
             transform-origin: center center;
             transition: transform 0.2s ease-out;
         }
-
         .slide-container {
-            width: 1280px; 
-            height: 720px; 
-            background-color: var(--bg-slide); 
+            width: 1280px;
+            height: 720px;
+            background-color: var(--bg-slide);
             position: absolute;
             top: 0;
             left: 0;
             overflow: hidden;
-            display: none; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4); 
+            display: none;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
             border: 4px solid var(--yvc-burgundy);
-            padding: 60px;
+            padding: 60px 80px 100px 80px; /* Espacio abajo para la cita */
         }
-        
         .slide-container.active { display: flex; flex-direction: column; }
-
-        /* 2. TYPOGRAPHY & BRANDS */
         h1, h2, h3 { font-family: 'Merriweather', serif; color: var(--yvc-burgundy); margin: 0; }
         p, li { font-size: 22px; color: var(--text-dark); line-height: 1.6; }
-
-        .slide-title { 
-            font-size: 42px; 
-            font-weight: 700; 
-            margin-bottom: 35px; 
-            border-left: 12px solid var(--yvc-burgundy); 
+        .slide-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            border-left: 12px solid var(--yvc-burgundy);
             padding-left: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
-        /* 3. LAYOUT STRUCTURES */
         .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
         .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; align-items: center; }
-        
         .image-wrapper { width: 100%; height: 380px; border-radius: 8px; overflow: hidden; border: 2px solid var(--yvc-burgundy); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-
         .tiled-content { display: flex; gap: 20px; width: 100%; }
         .tile { flex: 1; background: #FFF; padding: 30px; border-radius: 12px; border-top: 6px solid var(--yvc-burgundy); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .tile i { font-size: 40px; color: var(--yvc-burgundy); margin-bottom: 15px; display: block; }
-
         .bleed-image-layout { padding: 0 !important; display: grid !important; grid-template-columns: 1fr 1fr; align-items: stretch; }
-        .bleed-text-side { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+        .bleed-text-side { padding: 60px; display: flex; flex-direction: column; justify-content: center; position: relative; }
         .bleed-image-side { height: 720px; width: 100%; object-fit: cover; }
-
-        /* Table Design */
         table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         th, td { padding: 18px; text-align: left; font-size: 20px; border-bottom: 1px solid #e2e8f0; }
         th { background-color: var(--yvc-burgundy); color: white; font-family: 'Merriweather', serif; }
         tr:nth-child(even) { background-color: #f8fafc; }
+        
+        /* Citas al pie fijas */
+        .slide-citation {
+            position: absolute;
+            bottom: 25px;
+            left: 80px;
+            right: 80px;
+            font-size: 15px;
+            color: #666;
+            font-style: italic;
+            border-top: 1px solid #ddd;
+            padding-top: 8px;
+        }
+        .bleed-text-side .slide-citation { left: 60px; right: 60px; }
 
-        /* 4. PERSISTENT INTERACTIVE CONTROLS */
-        .controls { position: fixed; bottom: 35px; display: flex; gap: 20px; z-index: 9999; }
+        /* Controles fijados abajo */
+        .controls { position: fixed; bottom: 35px; display: flex; gap: 15px; z-index: 9999; }
         .nav-btn {
-            background: var(--yvc-burgundy); color: white; border: 2px solid white; padding: 14px 30px; border-radius: 4px;
-            cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 700; transition: 0.3s; font-size: 18px; letter-spacing: 1px;
+            background: var(--yvc-burgundy);
+            color: white;
+            border: 2px solid white;
+            padding: 14px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            transition: 0.3s;
+            font-size: 16px;
+            letter-spacing: 1px;
         }
         .nav-btn:hover { background: var(--yvc-navy); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .btn-home { background: #333333; }
 
-        /* Intro Profile Circle Image */
         .profile-box { display: flex; gap: 40px; align-items: center; }
-        .profile-circle { width: 400px; height: 400px; border-radius: 50%; border: 8px solid var(--yvc-burgundy); overflow: hidden; flex-shrink: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .profile-circle { width: 360px; height: 360px; border-radius: 50%; border: 8px solid var(--yvc-burgundy); overflow: hidden; flex-shrink: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
         .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
     </style>
 </head>
 <body>
 
-<div class="presentation-viewport" id="slideViewport">
+    <div class="presentation-viewport" id="slideViewport">
 
-    <div class="slide-container active" id="slide1" style="background-color: var(--yvc-burgundy); color: white; justify-content: center; align-items: center; text-align: center; border: none;">
-        <div style="font-size: 22px; letter-spacing: 6px; margin-bottom: 15px; font-weight: 500;">YAKIMA VALLEY COLLEGE</div>
-        <h1 style="color: #FFF; font-size: 80px; font-weight: 700; line-height: 1.1; margin-bottom: 20px;">GUERRERO IN YAKIMA</h1>
-        <div style="height: 4px; width: 120px; background-color: #FFD700; margin: 0 auto 35px;"></div>
-        <h2 style="color: #FFD700; font-size: 30px; font-weight: 500; letter-spacing: 3px;">ETHS 101: RESEARCH PROJECT PRESENTATION</h2>
-        <p style="color: white; margin-top: 50px; font-size: 22px; opacity: 0.9;">Prepared by: CC Negocios 2024 USA</p>
-    </div>
+        <div class="slide-container active" id="slide1" style="background-color: var(--yvc-burgundy); color: white; justify-content: center; align-items: center; text-align: center; border: none; padding: 60px;">
+            <div style="font-size: 22px; letter-spacing: 6px; margin-bottom: 15px; font-weight: 500;">YAKIMA VALLEY COLLEGE</div>
+            <h1 style="color: #FFF; font-size: 80px; font-weight: 700; line-height: 1.1; margin-bottom: 20px;">GUERRERO IN YAKIMA</h1>
+            <div style="height: 4px; width: 120px; background-color: #FFD700; margin: 0 auto 35px;"></div>
+            <h2 style="color: #FFD700; font-size: 30px; font-weight: 500; letter-spacing: 3px;">ETHS 101: RESEARCH PROJECT PRESENTATION</h2>
+            <p style="color: white; margin-top: 50px; font-size: 22px; opacity: 0.9;">Prepared by: CC Negocios 2024 USA</p>
+        </div>
 
-    <div class="slide-container" id="slide2">
-        <h2 class="slide-title">Introduction: The Human Profile</h2>
-        <div class="content-area">
-            <div class="profile-box">
-                <div class="profile-circle">
-                    <img src="https://images.unsplash.com/photo-1544655782-6b3a0eec32b9?auto=format&fit=crop&w=600&q=80" alt="Community Representation Profile">
+        <div class="slide-container" id="slide2">
+            <h2 class="slide-title">Introduction: The Human Profile</h2>
+            <div class="content-area">
+                <div class="profile-box">
+                    <div class="profile-circle">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/4154170444644999324" alt="Community Representation Profile">
+                    </div>
+                    <div>
+                        <h3 style="font-size: 28px; margin-bottom: 15px;">Identity & Demographic Resilience</h3>
+                        <p>This project analyzes the migration paths, cultural adaptations, and socioeconomic contributions of the <strong>Guerrerense community</strong> within Yakima County.</p>
+                        <p style="margin-top: 20px;">Rather than evaluating statistics alone, this research profiles the indigenous Mixtec and Triqui families who left southern Mexico, establishing an enduring cultural legacy and becoming the structural backbone of Washington's agricultural matrix.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 style="font-size: 28px; margin-bottom: 15px;">Identity & Demographic Resilience</h3>
-                    <p>This project analyzes the migration paths, cultural adaptations, and socioeconomic contributions of the <strong>Guerrerense community</strong> within Yakima County.</p>
-                    <p style="margin-top: 20px;">Rather than evaluating statistics alone, this research profiles the indigenous Mixtec and Triqui families who left southern Mexico, establishing an enduring cultural legacy and becoming the structural backbone of Washington's agricultural matrix.</p>
+            </div>
+            <div class="slide-citation">Source: WSU Libraries Digital Collections, "Mexican Americans in the Columbia River Basin" (2024).</div>
+        </div>
+
+        <div class="slide-container" id="slide3" style="background-color: var(--yvc-navy); color: white; justify-content: center; align-items: center; text-align: center; border: none;">
+            <h1 style="color: white; font-size: 65px; line-height: 1.2;">SECTION 2:<br>HISTORY OF MIGRATION AND ITS CAUSES</h1>
+            <div style="height: 6px; width: 140px; background-color: var(--yvc-burgundy); margin-top: 30px;"></div>
+        </div>
+
+        <div class="slide-container" id="slide4">
+            <h2 class="slide-title">Why the Yakima Valley?</h2>
+            <div class="content-area">
+                <div class="two-column">
+                    <div>
+                        <p>The Yakima Valley emerged as the primary destination due to its expansive agricultural architecture. Unlike metropolitan industrial centers, Yakima offered a familiar rural landscape corresponding with the ancestral agrarian background of Guerrero's farmers.</p>
+                        <p style="margin-top:20px;">An acute, constant regional demand for highly skilled farm labor served as the structural bridge connecting rural towns in southern Mexico with the Pacific Northwest.</p>
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/17792131875330207540" alt="Yakima Valley agricultural field">
+                    </div>
+                </div>
+            </div>
+            <div class="slide-citation">Source: Revisiting Washington (revisitwa.org), "Latino Heritage in the Yakima Valley".</div>
+        </div>
+
+        <div class="slide-container" id="slide5">
+            <h2 class="slide-title">Socioeconomic Push Factors</h2>
+            <div class="content-area">
+                <div class="tiled-content">
+                    <div class="tile">
+                        <i class="fa-solid fa-chart-line-down"></i>
+                        <h3>Rural Economic Crisis</h3>
+                        <p>The collapse of market prices for domestic staple crops like corn and coffee left thousands of smallholder families without subsistence options during the late 20th century.</p>
+                    </div>
+                    <div class="tile">
+                        <i class="fa-solid fa-cloud-sun"></i>
+                        <h3>Environmental Hardships</h3>
+                        <p>Severe environmental issues, including historic droughts and catastrophic soil erosion across "La Montaña" region, rendered local subsistence farming non-viable.</p>
+                    </div>
+                    <div class="tile">
+                        <i class="fa-solid fa-file-contract"></i>
+                        <h3>The Impact of NAFTA</h3>
+                        <p>Enacted in 1994, the trade treaty allowed subsidized foreign grains to saturate the Mexican market, undercutting and destabilizing localized rural economies.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-citation">Source: Migration Policy Institute, "Mexican Immigrants in the United States" (2023).</div>
+        </div>
+
+        <div class="slide-container bleed-image-layout" id="slide6">
+            <div class="bleed-text-side">
+                <h2 class="slide-title" style="border: none; padding: 0;">The Magnet of Hops</h2>
+                <p>The Yakima Valley produces roughly <strong>75% of total hops</strong> in the United States. This specialized vine demands intricate, high-intensity manual cultivation techniques year-round.</p>
+                <p style="margin-top:20px;">Migrant workforces from Guerrero quickly mastered these highly technical labor parameters, transitioning towns like Toppenish and Granger into vibrant permanent enclaves.</p>
+                <div class="slide-citation">Source: USDA National Agricultural Statistics Service (NASS), "Hop Stocks Report".</div>
+            </div>
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/10946268346856425429" class="bleed-image-side" alt="Hops field trellis system">
+        </div>
+
+        <div class="slide-container" id="slide7" style="background-color: var(--yvc-burgundy); color: white; justify-content: center; align-items: center; text-align: center; border: none;">
+            <h1 style="color: white; font-size: 65px; line-height: 1.2;">SECTION 3:<br>CULTURE, BELIEFS, AND GASTRONOMY</h1>
+            <div style="height: 6px; width: 140px; background-color: white; margin-top: 30px;"></div>
+        </div>
+
+        <div class="slide-container" id="slide8">
+            <h2 class="slide-title">Gastronomy as Cultural Resistance</h2>
+            <div class="content-area">
+                <div class="two-column">
+                    <div>
+                        <p>Traditional culinary practices function as a robust tool for cultural preservation. Moving past generic commercial products, families consistently recreate authentic regional culinary profiles.</p>
+                        <p style="margin-top:20px;">The ritual preparation of <strong>Guerrerense Pozole</strong> (both white and green varieties) on Thursdays serves as a fundamental axis for community cohesion and intergenerational identity transference within the valley.</p>
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/17388524680307064524" alt="Traditional Mexican corn preparation">
+                    </div>
+                </div>
+            </div>
+            <div class="slide-citation">Source: Ethnic Studies Journal, "Foodways and Migrant Identity" (2021).</div>
+        </div>
+
+        <div class="slide-container" id="slide9" style="background-color: var(--yvc-navy); color: white; justify-content: center; align-items: center; text-align: center; border: none;">
+            <h1 style="color: white; font-size: 65px; line-height: 1.2;">SECTION 4:<br>CELEBRATIONS, EVENTS, AND LEADERSHIP</h1>
+            <div style="height: 6px; width: 140px; background-color: var(--yvc-burgundy); margin-top: 30px;"></div>
+        </div>
+
+        <div class="slide-container" id="slide10">
+            <h2 class="slide-title">Celebrations and Annual Events</h2>
+            <div class="content-area">
+                <div class="two-column">
+                    <div>
+                        <p>Annual civic and spiritual celebrations serve as essential cultural matrix points, allowing direct structural engagement for first-generation youth born in the United States.</p>
+                        <ul style="margin-top: 20px; padding-left: 20px;">
+                            <li><strong>Patron Saint Festivals:</strong> Events honoring individual home village saints, incorporating distinct traditional masked dances like the <em>Danza de los Tecuanes</em>.</li>
+                            <li style="margin-top: 10px;"><strong>Day of the Dead:</strong> Collective buildout of highly elaborate altars (ofrendas) structured with regional southern artifacts and distinct artisanal breads.</li>
+                        </ul>
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/11137513329174705043" alt="Traditional cultural celebration candles">
+                    </div>
+                </div>
+            </div>
+            <div class="slide-citation">Source: UW Seattle, "Washington State Farmworker Struggles & Cultural Activism".</div>
+        </div>
+
+        <div class="slide-container" id="slide11">
+            <h2 class="slide-title">Section 5: Occupational Evolution</h2>
+            <div class="content-area">
+                <p style="margin-bottom: 20px;">Across four decades, the economic landscape for Guerrerenses in Yakima shifted from exclusionary seasonal field labor toward comprehensive professional diversification.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Timeline Framework</th>
+                            <th>Dominant Labor Occupations</th>
+                            <th>Macroeconomic Implications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Initial Waves (1980s - 1990s)</strong></td>
+                            <td>Manual harvesting of tree fruits; rigorous physical cultivation of seasonal hops.</td>
+                            <td>Direct dependence on weather cycles; minimum-wage baselines; heavy reliance on outward remittances.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Residential Transition (2000s - 2010s)</strong></td>
+                            <td>Orchard management; distribution facility logistics; regional construction and roofing trades.</td>
+                            <td>Stabilization of residential presence; extensive local homeownership developments.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Modern Era (Present Day)</strong></td>
+                            <td>Healthcare infrastructure; dual-language school systems; public administration; firm business ownership.</td>
+                            <td>Upward mobility; secondary and post-secondary educational integration across generations.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slide-citation">Source: U.S. Census Bureau, Yakima County Economic Profile (2020).</div>
+        </div>
+
+        <div class="slide-container" id="slide12">
+            <h2 class="slide-title">Leadership and Prominent Members</h2>
+            <div class="content-area">
+                <div class="tiled-content">
+                    <div class="tile">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <h3>Labor & Grassroots Unionization</h3>
+                        <p>Substantial collective power manifests through active alignment with grassroots organizations like <em>Familias Unidas por la Justicia</em>, securing trilingual equity and environmental working protections.</p>
+                    </div>
+                    <div class="tile">
+                        <i class="fa-solid fa-shop"></i>
+                        <h3>Socioeconomic Entrepreneurship</h3>
+                        <p>Dozens of families have successfully managed transitions from seasonal harvesting toward fixed commercial ownership, running localized restaurants, service shops, and logistics networks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-citation">Source: Punto Rojo Magazine, "Fighting for Justice While Feeding the Nation".</div>
+        </div>
+
+        <div class="slide-container" id="slide13">
+            <h2 class="slide-title">References / Works Cited</h2>
+            <div class="content-area">
+                <ul style="padding-left: 30px; font-size: 20px; line-height: 1.8;">
+                    <li><strong>Migration Policy Institute.</strong> <em>Mexican Immigrants in the United States.</em> Demographic evaluation of migration trajectories from southern Mexico to the Pacific Northwest.</li>
+                    <li style="margin-top: 15px;"><strong>Pew Research Center.</strong> <em>Key facts about U.S. Latinos for National Hispanic Heritage Month.</em> Geographic data sets regarding growth factors in specific rural "majority-minority" counties.</li>
+                    <li style="margin-top: 15px;"><strong>Punto Rojo Magazine.</strong> <em>Fighting for Justice While Feeding the Nation: Farmworkers at the Frontlines.</em> Case reviews tracking agricultural representation, labor protections, and indigenous community organization in Washington State.</li>
+                </ul>
+                <div style="margin-top: 40px; background: #FFF; padding: 25px; border-radius: 8px; border-left: 8px solid var(--yvc-burgundy); text-align: center;">
+                    <p style="font-size: 22px; font-weight: bold; color: var(--yvc-navy); margin: 0;">Yakima Valley College | Ethnic Studies ETHS 101</p>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <div class="slide-container" id="slide3" style="background-color: var(--yvc-navy); color: white; justify-content: center; align-items: center; text-align: center; border: none;">
-        <h1 style="color: white; font-size: 65px; line-height: 1.2;">SECTION 2:<br>HISTORY OF MIGRATION AND ITS CAUSES</h1>
-        <div style="height: 6px; width: 140px; background-color: var(--yvc-burgundy); margin-top: 30px;"></div>
+    <div class="controls">
+        <button class="nav-btn" onclick="changeSlide(-1)">PREVIOUS</button>
+        <button class="nav-btn btn-home" onclick="goToHome()">INICIO</button>
+        <button class="nav-btn" onclick="changeSlide(1)">NEXT</button>
     </div>
 
-    <div class="slide-container" id="slide4">
-        <h2 class="slide-title">Why the Yakima Valley?</h2>
-        <div class="content-area">
-            <div class="two-column">
-                <div>
-                    <p>The Yakima Valley emerged as the primary destination due to its expansive agricultural architecture. Unlike metropolitan industrial centers, Yakima offered a familiar rural landscape corresponding with the ancestral agrarian background of Guerrero's farmers.</p>
-                    <p style="margin-top:20px;">An acute, constant regional demand for highly skilled farm labor served as the structural bridge connecting rural towns in southern Mexico with the Pacific Northwest.</p>
-                </div>
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=800&q=80" alt="Yakima Valley agricultural field">
-                </div>
-            </div>
-        </div>
-    </div>
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 13;
 
-    <div class="slide-container" id="slide5">
-        <h2 class="slide-title">Socioeconomic Push Factors</h2>
-        <div class="content-area">
-            <div class="tiled-content">
-                <div class="tile">
-                    <i class="fa-solid fa-chart-line-down"></i>
-                    <h3>Rural Economic Crisis</h3>
-                    <p>The collapse of market prices for domestic staple crops like corn and coffee left thousands of smallholder families without subsistence options during the late 20th century.</p>
-                </div>
-                <div class="tile">
-                    <i class="fa-solid fa-cloud-sun"></i>
-                    <h3>Environmental Hardships</h3>
-                    <p>Severe environmental issues, including historic droughts and catastrophic soil erosion across "La Montaña" region, rendered local subsistence farming non-viable.</p>
-                </div>
-                <div class="tile">
-                    <i class="fa-solid fa-file-contract"></i>
-                    <h3>The Impact of NAFTA</h3>
-                    <p>Enacted in 1994, the trade treaty allowed subsidized foreign grains to saturate the Mexican market, undercutting and destabilizing localized rural economies.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+        function changeSlide(n) {
+            document.getElementById('slide' + currentSlide).classList.remove('active');
+            currentSlide += n;
+            if (currentSlide > totalSlides) currentSlide = 1;
+            if (currentSlide < 1) currentSlide = totalSlides;
+            document.getElementById('slide' + currentSlide).classList.add('active');
+        }
 
-    <div class="slide-container bleed-image-layout" id="slide6">
-        <div class="bleed-text-side">
-            <h2 class="slide-title" style="border: none; padding: 0;">The Magnet of Hops</h2>
-            <p>The Yakima Valley produces roughly <strong>75% of total hops</strong> in the United States. This specialized vine demands intricate, high-intensity manual cultivation techniques year-round.</p>
-            <p style="margin-top:20px;">Migrant workforces from Guerrero quickly mastered these highly technical labor parameters, transitioning towns like Toppenish and Granger into vibrant permanent enclaves.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1566908973733-4f60f61d2fe4?auto=format&fit=crop&w=800&q=80" class="bleed-image-side" alt="Hops field trellis system">
-    </div>
+        function goToHome() {
+            document.getElementById('slide' + currentSlide).classList.remove('active');
+            currentSlide = 1;
+            document.getElementById('slide' + currentSlide).classList.add('active');
+        }
 
-    <div class="slide-container" id="slide7" style="background-color: var(--yvc-burgundy); color: white; justify-content: center; align-items: center; text-align: center; border: none;">
-        <h1 style="color: white; font-size: 65px; line-height: 1.2;">SECTION 3:<br>CULTURE, BELIEFS, AND GASTRONOMY</h1>
-        <div style="height: 6px; width: 140px; background-color: white; margin-top: 30px;"></div>
-    </div>
+        function adjustScale() {
+            const viewport = document.getElementById('slideViewport');
+            const scaleX = window.innerWidth / 1340;
+            const scaleY = window.innerHeight / 780;
+            const finalScale = Math.min(scaleX, scaleY, 1);
+            viewport.style.transform = `scale(${finalScale})`;
+        }
 
-    <div class="slide-container" id="slide8">
-        <h2 class="slide-title">Gastronomy as Cultural Resistance</h2>
-        <div class="content-area">
-            <div class="two-column">
-                <div>
-                    <p>Traditional culinary practices function as a robust tool for cultural preservation. Moving past generic commercial products, families consistently recreate authentic regional culinary profiles.</p>
-                    <p style="margin-top:20px;">The ritual preparation of <strong>Guerrerense Pozole</strong> (both white and green varieties) on Thursdays serves as a fundamental axis for community cohesion and intergenerational identity transference within the valley.</p>
-                </div>
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80" alt="Traditional Mexican corn preparation">
-                </div>
-            </div>
-        </div>
-    </div>
+        window.addEventListener('resize', adjustScale);
+        window.addEventListener('load', adjustScale);
+        adjustScale();
 
-    <div class="slide-container" id="slide9" style="background-color: var(--yvc-navy); color: white; justify-content: center; align-items: center; text-align: center; border: none;">
-        <h1 style="color: white; font-size: 65px; line-height: 1.2;">SECTION 4:<br>CELEBRATIONS, EVENTS, AND LEADERSHIP</h1>
-        <div style="height: 6px; width: 140px; background-color: var(--yvc-burgundy); margin-top: 30px;"></div>
-    </div>
-
-    <div class="slide-container" id="slide10">
-        <h2 class="slide-title">Celebrations and Annual Events</h2>
-        <div class="content-area">
-            <div class="two-column">
-                <div>
-                    <p>Annual civic and spiritual celebrations serve as essential cultural matrix points, allowing direct structural engagement for first-generation youth born in the United States.</p>
-                    <ul style="margin-top: 20px; padding-left: 20px;">
-                        <li><strong>Patron Saint Festivals:</strong> Events honoring individual home village saints, incorporating distinct traditional masked dances like the <em>Danza de los Tecuanes</em>.</li>
-                        <li style="margin-top: 10px;"><strong>Day of the Dead:</strong> Collective buildout of highly elaborate altars (ofrendas) structured with regional southern artifacts and distinct artisanal breads.</li>
-                    </ul>
-                </div>
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=800&q=80" alt="Traditional cultural celebration candles">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide-container" id="slide12">
-        <h2 class="slide-title">Leadership and Prominent Members</h2>
-        <div class="content-area">
-            <div class="tiled-content">
-                <div class="tile">
-                    <i class="fa-solid fa-users-gear"></i>
-                    <h3>Labor & Grassroots Unionization</h3>
-                    <p>Substantial collective power manifests through active alignment with grassroots organizations like <em>Familias Unidas por la Justicia</em>, securing trilingual equity and environmental working protections.</p>
-                </div>
-                <div class="tile">
-                    <i class="fa-solid fa-shop"></i>
-                    <h3>Socioeconomic Entrepreneurship</h3>
-                    <p>Dozens of families have successfully managed transitions from seasonal harvesting toward fixed commercial ownership, running localized restaurants, service shops, and logistics networks.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide-container" id="slide11">
-        <h2 class="slide-title">Section 5: Occupational Evolution</h2>
-        <div class="content-area">
-            <p style="margin-bottom: 20px;">Across four decades, the economic landscape for Guerrerenses in Yakima shifted from exclusionary seasonal field labor toward comprehensive professional diversification.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Timeline Framework</th>
-                        <th>Dominant Labor Ocupations</th>
-                        <th>Macroeconomic Implications</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Initial Waves (1980s - 1990s)</strong></td>
-                        <td>Manual harvesting of tree fruits; rigorous physical cultivation of seasonal hops.</td>
-                        <td>Direct dependence on weather cycles; minimum-wage baselines; heavy reliance on outward remittances.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Residential Transition (2000s - 2010s)</strong></td>
-                        <td>Orchard management; distribution facility logistics; regional construction and roofing trades.</td>
-                        <td>Stabilization of residential presence; extensive local homeownership developments.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Modern Era (Present Day)</strong></td>
-                        <td>Healthcare infrastructure; dual-language school systems; public administration; firm business ownership.</td>
-                        <td>Upward mobility; secondary and post-secondary educational integration across generations.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="slide-container" id="slide13">
-        <h2 class="slide-title">References / Works Cited</h2>
-        <div class="content-area">
-            <ul style="padding-left: 30px; font-size: 20px; line-height: 1.8;">
-                <li><strong>Migration Policy Institute.</strong> <em>Mexican Immigrants in the United States.</em> Demographic evaluation of migration trajectories from southern Mexico to the Pacific Northwest.</li>
-                <li style="margin-top: 15px;"><strong>Pew Research Center.</strong> <em>Key facts about U.S. Latinos for National Hispanic Heritage Month.</em> Geographic data sets regarding growth factors in specific rural "majority-minority" counties.</li>
-                <li style="margin-top: 15px;"><strong>Punto Rojo Magazine.</strong> <em>Fighting for Justice While Feeding the Nation: Farmworkers at the Frontlines.</em> Case reviews tracking agricultural representation, labor protections, and indigenous community organization in Washington State.</li>
-            </ul>
-            <div style="margin-top: 40px; background: #FFF; padding: 25px; border-radius: 8px; border-left: 8px solid var(--yvc-burgundy); text-align: center;">
-                <p style="font-size: 22px; font-weight: bold; color: var(--yvc-navy); margin: 0;">Yakima Valley College | Ethnic Studies ETHS 101</p>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<div class="controls">
-    <button class="nav-btn" onclick="changeSlide(-1)">PREVIOUS</button>
-    <button class="nav-btn" onclick="changeSlide(1)">NEXT</button>
-</div>
-
-<script>
-    let currentSlide = 1;
-    const totalSlides = 13;
-
-    function changeSlide(n) {
-        document.getElementById('slide' + currentSlide).classList.remove('active');
-        currentSlide += n;
-        if (currentSlide > totalSlides) currentSlide = 1;
-        if (currentSlide < 1) currentSlide = totalSlides;
-        document.getElementById('slide' + currentSlide).classList.add('active');
-    }
-
-    // Dynamic scale script to automatically fit viewport on different resolutions
-    function adjustScale() {
-        const viewport = document.getElementById('slideViewport');
-        const scaleX = window.innerWidth / 1340; 
-        const scaleY = window.innerHeight / 780;
-        const finalScale = Math.min(scaleX, scaleY, 1); // Cap scaling at 1 to maintain crisp text
-        viewport.style.transform = `scale(${finalScale})`;
-    }
-
-    window.addEventListener('resize', adjustScale);
-    window.addEventListener('load', adjustScale);
-    adjustScale(); // Initial execution
-
-    // Keyboard controls
-    document.addEventListener('keydown', (e) => {
-        if (e.key === "ArrowRight") changeSlide(1);
-        if (e.key === "ArrowLeft") changeSlide(-1);
-    });
-</script>
-
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowRight") changeSlide(1);
+            if (e.key === "ArrowLeft") changeSlide(-1);
+        });
+    </script>
 </body>
 </html>
