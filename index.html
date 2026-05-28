@@ -61,14 +61,34 @@
         }
         .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
         .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; align-items: center; }
-        .image-wrapper { width: 100%; height: 380px; border-radius: 8px; overflow: hidden; border: 2px solid var(--yvc-burgundy); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
-        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Contenedor decorativo que reemplaza las imágenes rotas */
+        .vector-graphic-box { 
+            width: 100%; 
+            height: 380px; 
+            border-radius: 12px; 
+            background: linear-gradient(135deg, #fdfbf7 0%, #f5f0e6 100%);
+            border: 3px dashed var(--yvc-burgundy); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+            gap: 20px;
+        }
+        .vector-graphic-box i { font-size: 110px; color: var(--yvc-burgundy); opacity: 0.85; }
+        .vector-graphic-box span { font-family: 'Merriweather', serif; font-size: 18px; color: var(--yvc-navy); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+
         .tiled-content { display: flex; gap: 20px; width: 100%; }
         .tile { flex: 1; background: #FFF; padding: 30px; border-radius: 12px; border-top: 6px solid var(--yvc-burgundy); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .tile i { font-size: 40px; color: var(--yvc-burgundy); margin-bottom: 15px; display: block; }
-        .bleed-image-layout { padding: 0 !important; display: grid !important; grid-template-columns: 1fr 1fr; align-items: stretch; }
-        .bleed-text-side { padding: 60px; display: flex; flex-direction: column; justify-content: center; position: relative; }
-        .bleed-image-side { height: 720px; width: 100%; object-fit: cover; border-left: 4px solid var(--yvc-burgundy); }
+        
+        /* Diseño especial para la diapositiva del Lúpulo (Slide 6) sin imágenes rotas */
+        .bleed-image-layout { display: grid !important; grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 40px; }
+        .vector-bleed-side { height: 100%; background: linear-gradient(135deg, var(--yvc-burgundy) 0%, #800c1c 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; color: white; padding: 40px; text-align: center; border-radius: 12px; }
+        .vector-bleed-side i { font-size: 140px; color: #FFD700; }
+        .vector-bleed-side h4 { font-family: 'Merriweather', serif; font-size: 26px; letter-spacing: 1px; }
+
         table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         th, td { padding: 18px; text-align: left; font-size: 20px; border-bottom: 1px solid #e2e8f0; }
         th { background-color: var(--yvc-burgundy); color: white; font-family: 'Merriweather', serif; }
@@ -85,7 +105,6 @@
             border-top: 1px solid #ddd;
             padding-top: 8px;
         }
-        .bleed-text-side .slide-citation { left: 60px; right: 60px; }
 
         .controls { position: fixed; bottom: 35px; display: flex; gap: 15px; z-index: 9999; }
         .nav-btn {
@@ -105,15 +124,16 @@
         .btn-home { background: #333333; }
 
         .profile-box { display: flex; gap: 40px; align-items: center; }
-        .profile-circle { width: 360px; height: 360px; border-radius: 50%; border: 8px solid var(--yvc-burgundy); overflow: hidden; flex-shrink: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-        .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-vector { width: 360px; height: 360px; border-radius: 50%; border: 6px dashed var(--yvc-burgundy); background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.05); gap: 15px; }
+        .profile-vector i { font-size: 120px; color: var(--yvc-navy); }
+        .profile-vector span { font-weight: bold; color: var(--yvc-burgundy); letter-spacing: 1px; font-size: 16px; }
     </style>
 </head>
 <body>
 
     <div class="presentation-viewport" id="slideViewport">
 
-        <div class="slide-container active" id="slide1" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1280'); background-size: cover; background-position: center; color: white; justify-content: center; align-items: center; text-align: center; border: none; padding: 60px;">
+        <div class="slide-container active" id="slide1" style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1280'); background-size: cover; background-position: center; color: white; justify-content: center; align-items: center; text-align: center; border: none; padding: 60px;">
             <div style="font-size: 22px; letter-spacing: 6px; margin-bottom: 15px; font-weight: 500; color: #FFD700;">YAKIMA VALLEY COLLEGE</div>
             <h1 style="color: #FFF; font-size: 80px; font-weight: 700; line-height: 1.1; margin-bottom: 20px;">GUERRERO IN YAKIMA</h1>
             <div style="height: 4px; width: 120px; background-color: #FFD700; margin: 0 auto 35px;"></div>
@@ -125,8 +145,9 @@
             <h2 class="slide-title">Introduction: The Human Profile</h2>
             <div class="content-area">
                 <div class="profile-box">
-                    <div class="profile-circle">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600" alt="Community Representation Profile">
+                    <div class="profile-vector">
+                        <i class="fa-solid fa-users"></i>
+                        <span>COMMUNITY FOCUS</span>
                     </div>
                     <div>
                         <h3 style="font-size: 28px; margin-bottom: 15px;">Identity & Demographic Resilience</h3>
@@ -151,8 +172,9 @@
                         <p>The Yakima Valley emerged as the primary destination due to its expansive agricultural architecture. Unlike metropolitan industrial centers, Yakima offered a familiar rural landscape corresponding with the ancestral agrarian background of Guerrero's farmers.</p>
                         <p style="margin-top:20px;">An acute, constant regional demand for highly skilled farm labor served as the structural bridge connecting rural towns in southern Mexico with the Pacific Northwest.</p>
                     </div>
-                    <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800" alt="Yakima Valley agricultural field">
+                    <div class="vector-graphic-box">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <span>Geographic Destination</span>
                     </div>
                 </div>
             </div>
@@ -183,14 +205,21 @@
             <div class="slide-citation">Source: Migration Policy Institute, "Mexican Immigrants in the United States" (2023).</div>
         </div>
 
-        <div class="slide-container bleed-image-layout" id="slide6">
-            <div class="bleed-text-side">
-                <h2 class="slide-title" style="border: none; padding: 0;">The Magnet of Hops</h2>
-                <p>The Yakima Valley produces roughly <strong>75% of total hops</strong> in the United States. This specialized vine demands intricate, high-intensity manual cultivation techniques year-round.</p>
-                <p style="margin-top:20px;">Migrant workforces from Guerrero quickly mastered these highly technical labor parameters, transitioning towns like Toppenish and Granger into vibrant permanent enclaves.</p>
-                <div class="slide-citation">Source: USDA National Agricultural Statistics Service (NASS), "Hop Stocks Report".</div>
+        <div class="slide-container" id="slide6">
+            <h2 class="slide-title">The Magnet of Hops</h2>
+            <div class="content-area">
+                <div class="bleed-image-layout">
+                    <div>
+                        <p>The Yakima Valley produces roughly <strong>75% of total hops</strong> in the United States. This specialized vine demands intricate, high-intensity manual cultivation techniques year-round.</p>
+                        <p style="margin-top:20px;">Migrant workforces from Guerrero quickly mastered these highly technical labor parameters, transitioning towns like Toppenish and Granger into vibrant permanent enclaves.</p>
+                    </div>
+                    <div class="vector-bleed-side">
+                        <i class="fa-solid fa-wheat-awn"></i>
+                        <h4>AGRICULTURAL BACKBONE</h4>
+                    </div>
+                </div>
             </div>
-            <img src="https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?q=80&w=800" class="bleed-image-side" alt="Hops field trellis system">
+            <div class="slide-citation">Source: USDA National Agricultural Statistics Service (NASS), "Hop Stocks Report".</div>
         </div>
 
         <div class="slide-container" id="slide7" style="background-color: var(--yvc-burgundy); color: white; justify-content: center; align-items: center; text-align: center; border: none;">
@@ -206,8 +235,9 @@
                         <p>Traditional culinary practices function as a robust tool for cultural preservation. Moving past generic commercial products, families consistently recreate authentic regional culinary profiles.</p>
                         <p style="margin-top:20px;">The ritual preparation of <strong>Guerrerense Pozole</strong> (both white and green varieties) on Thursdays serves as a fundamental axis for community cohesion and intergenerational identity transference within the valley.</p>
                     </div>
-                    <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=800" alt="Traditional Mexican corn preparation">
+                    <div class="vector-graphic-box">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>Gastronomy & Identity</span>
                     </div>
                 </div>
             </div>
@@ -230,8 +260,9 @@
                             <li style="margin-top: 10px;"><strong>Day of the Dead:</strong> Collective buildout of highly elaborate altars (ofrendas) structured with regional southern artifacts and distinct artisanal breads.</li>
                         </ul>
                     </div>
-                    <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=800" alt="Traditional cultural celebration candles">
+                    <div class="vector-graphic-box">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Cultural Matrix</span>
                     </div>
                 </div>
             </div>
