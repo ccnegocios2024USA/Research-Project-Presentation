@@ -45,7 +45,7 @@
             display: none;
             box-shadow: 0 20px 50px rgba(0,0,0,0.4);
             border: 4px solid var(--yvc-burgundy);
-            padding: 60px 80px 100px 80px; /* Espacio abajo para la cita */
+            padding: 60px 80px 100px 80px;
         }
         .slide-container.active { display: flex; flex-direction: column; }
         h1, h2, h3 { font-family: 'Merriweather', serif; color: var(--yvc-burgundy); margin: 0; }
@@ -68,13 +68,12 @@
         .tile i { font-size: 40px; color: var(--yvc-burgundy); margin-bottom: 15px; display: block; }
         .bleed-image-layout { padding: 0 !important; display: grid !important; grid-template-columns: 1fr 1fr; align-items: stretch; }
         .bleed-text-side { padding: 60px; display: flex; flex-direction: column; justify-content: center; position: relative; }
-        .bleed-image-side { height: 720px; width: 100%; object-fit: cover; }
+        .bleed-image-side { height: 720px; width: 100%; object-fit: cover; border-left: 4px solid var(--yvc-burgundy); }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         th, td { padding: 18px; text-align: left; font-size: 20px; border-bottom: 1px solid #e2e8f0; }
         th { background-color: var(--yvc-burgundy); color: white; font-family: 'Merriweather', serif; }
         tr:nth-child(even) { background-color: #f8fafc; }
         
-        /* Citas al pie fijas */
         .slide-citation {
             position: absolute;
             bottom: 25px;
@@ -88,7 +87,6 @@
         }
         .bleed-text-side .slide-citation { left: 60px; right: 60px; }
 
-        /* Controles fijados abajo */
         .controls { position: fixed; bottom: 35px; display: flex; gap: 15px; z-index: 9999; }
         .nav-btn {
             background: var(--yvc-burgundy);
@@ -115,8 +113,8 @@
 
     <div class="presentation-viewport" id="slideViewport">
 
-        <div class="slide-container active" id="slide1" style="background-color: var(--yvc-burgundy); color: white; justify-content: center; align-items: center; text-align: center; border: none; padding: 60px;">
-            <div style="font-size: 22px; letter-spacing: 6px; margin-bottom: 15px; font-weight: 500;">YAKIMA VALLEY COLLEGE</div>
+        <div class="slide-container active" id="slide1" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1280'); background-size: cover; background-position: center; color: white; justify-content: center; align-items: center; text-align: center; border: none; padding: 60px;">
+            <div style="font-size: 22px; letter-spacing: 6px; margin-bottom: 15px; font-weight: 500; color: #FFD700;">YAKIMA VALLEY COLLEGE</div>
             <h1 style="color: #FFF; font-size: 80px; font-weight: 700; line-height: 1.1; margin-bottom: 20px;">GUERRERO IN YAKIMA</h1>
             <div style="height: 4px; width: 120px; background-color: #FFD700; margin: 0 auto 35px;"></div>
             <h2 style="color: #FFD700; font-size: 30px; font-weight: 500; letter-spacing: 3px;">ETHS 101: RESEARCH PROJECT PRESENTATION</h2>
@@ -128,7 +126,7 @@
             <div class="content-area">
                 <div class="profile-box">
                     <div class="profile-circle">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/4154170444644999324" alt="Community Representation Profile">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600" alt="Community Representation Profile">
                     </div>
                     <div>
                         <h3 style="font-size: 28px; margin-bottom: 15px;">Identity & Demographic Resilience</h3>
@@ -154,7 +152,7 @@
                         <p style="margin-top:20px;">An acute, constant regional demand for highly skilled farm labor served as the structural bridge connecting rural towns in southern Mexico with the Pacific Northwest.</p>
                     </div>
                     <div class="image-wrapper">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/17792131875330207540" alt="Yakima Valley agricultural field">
+                        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800" alt="Yakima Valley agricultural field">
                     </div>
                 </div>
             </div>
@@ -192,7 +190,7 @@
                 <p style="margin-top:20px;">Migrant workforces from Guerrero quickly mastered these highly technical labor parameters, transitioning towns like Toppenish and Granger into vibrant permanent enclaves.</p>
                 <div class="slide-citation">Source: USDA National Agricultural Statistics Service (NASS), "Hop Stocks Report".</div>
             </div>
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/10946268346856425429" class="bleed-image-side" alt="Hops field trellis system">
+            <img src="https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?q=80&w=800" class="bleed-image-side" alt="Hops field trellis system">
         </div>
 
         <div class="slide-container" id="slide7" style="background-color: var(--yvc-burgundy); color: white; justify-content: center; align-items: center; text-align: center; border: none;">
@@ -209,7 +207,7 @@
                         <p style="margin-top:20px;">The ritual preparation of <strong>Guerrerense Pozole</strong> (both white and green varieties) on Thursdays serves as a fundamental axis for community cohesion and intergenerational identity transference within the valley.</p>
                     </div>
                     <div class="image-wrapper">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/17388524680307064524" alt="Traditional Mexican corn preparation">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=800" alt="Traditional Mexican corn preparation">
                     </div>
                 </div>
             </div>
@@ -233,7 +231,7 @@
                         </ul>
                     </div>
                     <div class="image-wrapper">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/11137513329174705043" alt="Traditional cultural celebration candles">
+                        <img src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=800" alt="Traditional cultural celebration candles">
                     </div>
                 </div>
             </div>
@@ -315,7 +313,7 @@
         <button class="nav-btn" onclick="changeSlide(1)">NEXT</button>
     </div>
 
-    <script>
+    <script {nonce}>
         let currentSlide = 1;
         const totalSlides = 13;
 
