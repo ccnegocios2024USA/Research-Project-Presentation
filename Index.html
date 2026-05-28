@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia de las Migraciones - Guerrero a Yakima</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #f3f0df; font-family: 'DM Sans', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px 0; }
+        
+        .slide-container {
+            width: 1280px; height: 720px; background-color: #fff; position: relative; overflow: hidden;
+            display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 8px; margin-bottom: 20px;
+        }
+        .slide-container.active { display: flex; flex-direction: column; padding: 60px; }
+
+        .slide-container::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 10px;
+            background: linear-gradient(90deg, #005088 0%, #11caa0 100%);
+        }
+
+        h1, h2, h3 { font-family: 'Merriweather', serif; color: #005088; margin: 0; }
+        p, li { font-size: 22px; color: #475569; line-height: 1.6; }
+
+        .slide-title { font-size: 42px; font-weight: 700; margin-bottom: 40px; border-bottom: 3px solid #005088; width: fit-content; padding-bottom: 10px; }
+        
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; }
+        
+        .image-wrapper { width: 100%; height: 380px; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        .tiled-content { display: flex; gap: 20px; width: 100%; }
+        .tile { flex: 1; background: #f8fafc; padding: 30px; border-radius: 15px; border-top: 5px solid #005088; }
+        .tile i { font-size: 40px; color: #11caa0; margin-bottom: 15px; }
+
+        .bleed-image-layout { padding: 0 !important; display: grid !important; grid-template-columns: 1fr 1fr; align-items: stretch; }
+        .bleed-text-side { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+        .bleed-image-side { height: 720px; width: 100%; object-fit: cover; }
+
+        .timeline-layout { display: flex; justify-content: space-between; position: relative; margin-top: 50px; }
+        .timeline-line { position: absolute; top: 50%; left: 0; width: 100%; height: 4px; background: #e2e8f0; z-index: 0; }
+        .timeline-item { width: 23%; background: #fff; border: 2px solid #005088; padding: 15px; border-radius: 10px; z-index: 1; text-align: center; }
+
+        .controls { display: flex; gap: 20px; z-index: 10; margin-top: 10px; }
+        .nav-btn {
+            background: #005088; color: white; border: none; padding: 12px 25px; border-radius: 25px;
+            cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 700; transition: 0.3s; font-size: 18px;
+        }
+        .nav-btn:hover { background: #11caa0; }
+
+        .number-box { text-align: center; }
+        .big-number { font-size: 150px; font-weight: 700; color: #005088; line-height: 1; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container active" id="slide1" style="background-color: #005088; color: white; justify-content: center; align-items: center; text-align: center;">
+    <h1 style="color: #f3f0df; font-size: 80px;">Sección 2</h1>
+    <h2 style="color: #11caa0; font-size: 50px; margin-top: 20px;">Historia de las Migraciones y sus Causas</h2>
+    <p style="color: #f3f0df; margin-top: 40px; max-width: 800px; font-size: 24px;">Investigación sobre el movimiento de la comunidad de Guerrero hacia el estado de Washington.</p>
+</div>
+
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">¿Por qué el Valle de Yakima?</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>El Valle de Yakima se convirtió en el destino principal debido a su enorme industria agrícola. A diferencia de las grandes ciudades industriales, Yakima ofrecía un entorno rural y familiar muy similar al campo mexicano.</p>
+                <p style="margin-top:20px;">La necesidad constante de mano de obra experta en la agricultura fue el puente definitivo que conectó los pueblos del sur de México con el noroeste de los Estados Unidos.</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/1322650105169879504" alt="Vista aérea de huertos en Yakima">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Factores de "Empuje" (Push Factors)</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <i class="fa-solid fa-chart-line-down"></i>
+                <h3>Crisis Económica rural</h3>
+                <p>La caída de los precios comerciales de productos básicos como el maíz y el café en Guerrero dejó a miles de familias campesinas sin su sustento diario a finales del siglo XX.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-cloud-sun"></i>
+                <h3>Desafíos Ambientales</h3>
+                <p>Sequías prolongadas, falta de sistemas de riego y la severa erosión de los suelos en la región de La Montaña hicieron casi imposible continuar con la agricultura de subsistencia.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-file-contract"></i>
+                <h3>El Impacto del TLCAN</h3>
+                <p>Entrado en vigor en 1994, el tratado permitió la entrada masiva de maíz extranjero barato, desestabilizando la economía de los pequeños productores guerrerenses.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout" id="slide4">
+    <div class="bleed-text-side">
+        <h2 class="slide-title">El Imán del Lúpulo</h2>
+        <p>El Valle de Yakima es famoso a nivel mundial por producir más del 75% del lúpulo de los Estados Unidos. Este cultivo requiere un manejo manual sumamente meticuloso y pesado.</p>
+        <p style="margin-top:20px;">Los trabajadores provenientes de Guerrero dominaron estas técnicas rápidamente, transformando ciudades como Toppenish y Granger en sus nuevos hogares permanentes.</p>
+    </div>
+    <img src="http://googleusercontent.com/image_collection/image_retrieval/14989603019432401140" class="bleed-image-side" alt="Campos de lúpulo en Yakima">
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">La Industria Frutícola</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper" style="height: 450px;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/15798635551946030925" alt="Trabajadores cosechando manzanas">
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <h3>Mano de Obra Especializada</h3>
+                <p>La cosecha de la manzana, la cereza y la pera requiere de una técnica muy cuidadosa para no dañar el producto. Los guerrerenses aportaron su experiencia y disciplina en el trabajo de la tierra.</p>
+                <p style="margin-top: 20px;">Esta especialización laboral abrió las puertas para que las familias lograran una estabilidad residencial, pasando de la migración temporal al arraigo en el Valle.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Cronología del Movimiento</h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <h3 style="font-size: 24px;">1980s</h3>
+                <p>Primeras oleadas migratorias debido a las crisis del sector cafetalero en el sur.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 style="font-size: 24px;">1994</h3>
+                <p>Efectos del TLCAN aceleran el éxodo rural desde las comunidades indígenas.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 style="font-size: 24px;">2000s</h3>
+                <p>Consolidación comunitaria, reunificación familiar y apertura de comercios locales.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 style="font-size: 24px;">Actualidad</h3>
+                <p>Presencia clave en liderazgo sindical, educación y desarrollo regional en Yakima.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Impacto en la Región</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="number-box">
+                <div class="big-number">50%+</div>
+                <h3>Población Hispana</h3>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <p>En el Condado de Yakima, la comunidad hispana ya representa la mitad del total de los habitantes.</p>
+                <p style="margin-top: 20px;">Dentro de este porcentaje, las familias originarias del estado de Guerrero componen uno de los bloques identitarios más dinámicos, aportando juventud y fuerza laboral a Washington.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Resiliencia Cultural y Lengua</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <h3>Preservación Mixteca y Triqui</h3>
+                <p>Una característica única de la migración guerrerense es su herencia indígena viva. A pesar de enfrentar barreras lingüísticas y discriminación, han usado su cultura como un factor de resiliencia.</p>
+                <p style="margin-top: 20px;">Gracias a esto, hoy en día las lenguas originarias de Guerrero se escuchan con orgullo en los campos y centros comunitarios del Valle.</p>
+            </div>
+            <div class="image-wrapper" style="border-radius: 50%; width: 450px; height: 450px; margin: 0 auto;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/15133073354309503367" alt="Foto histórica trabajadores agrícolas">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9" style="text-align: center; justify-content: center;">
+    <i class="fa-solid fa-quote-left" style="font-size: 60px; color: #11caa0; margin-bottom: 20px;"></i>
+    <blockquote style="font-family: 'Merriweather', serif; font-size:
