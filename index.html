@@ -6,7 +6,7 @@
     <title>FINAL RESEARCH PROJECT - ETHS 101</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght=400;700&family=DM+Sans:wght=400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -100,7 +100,7 @@
                     <p style="margin-top:15px;">Fueled by the 20th-century Civil Rights Movements, communities organized to safeguard their labor protections and cultural customs, shaping modern American cultural diversity.</p>
                 </div>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1594781440955-46df220becc7?auto=format&fit=crop&w=600&q=80" alt="Historical farm labor workers">
+                    <img src="https://images.unsplash.com/photo-1594142171421-277ba5bb6f78?auto=format&fit=crop&q=80&w=600" alt="Historical farm labor workers">
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@
                     <p style="margin-top: 15px;">Despite immense geographic displacement, community members successfully preserve their indigenous native languages, cultural worldviews, and traditional family customs inside the valley.</p>
                 </div>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1561571513-40a24982bb2e?auto=format&fit=crop&w=600&q=80" alt="Traditional cultural patterns and indigenous roots">
+                    <img src="https://images.unsplash.com/photo-1561542320-9a18cd340469?auto=format&fit=crop&q=80&w=600" alt="Traditional cultural patterns and indigenous roots">
                 </div>
             </div>
         </div>
@@ -163,7 +163,7 @@
                     <p style="margin-top: 15px;">This local infrastructure transformed agricultural colonies into vibrant, permanent neighborhoods with high levels of civic cohesion.</p>
                 </div>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80" alt="Community market spaces">
+                    <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&q=80&w=600" alt="Community market spaces">
                 </div>
             </div>
         </div>
@@ -180,7 +180,7 @@
                     <p style="margin-top: 15px;">Arriving workers from Guerrero rapidly mastered these technical crop demands, cementing themselves as indispensable pillars for Washington State's agribusiness economy.</p>
                 </div>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1595908129746-57ca1a63dd4d?auto=format&fit=crop&w=600&q=80" alt="Hops fields production in Yakima">
+                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&q=80&w=600" alt="Hops fields production in Yakima">
                 </div>
             </div>
         </div>
@@ -263,54 +263,4 @@
         <div class="page-citation">ETHS 101 Final Synthesis Presentation</div>
     </div>
 
-    <div class="slide-container" id="slide13">
-        <h2 class="slide-title" style="text-transform: uppercase;">REFERENCES</h2>
-        <div class="content-area">
-            <ul style="padding-left: 20px; font-size: 18px; line-height: 1.7; color: #334155; list-style-type: square;">
-                <li><strong>Migration Policy Institute.</strong> <em>Mexican Immigrants in the United States.</em> Analysis of southern Mexican migration streams and regional labor dynamics in the Pacific Northwest.</li>
-                <li style="margin-top: 10px;"><strong>WSU Libraries Digital Collections, CONTENTdm. (2026).</strong> WSU.edu. Evaluation of regional agricultural overviews and historical labor distributions: <span style="font-size:15px; color:#AD1128;">https://content.libraries.wsu.edu/digital/collection/cchm/custom/ma-overview</span></li>
-                <li style="margin-top: 10px;"><strong>mvickers. (2023, October 6).</strong> <em>A History of Latino(a) Leaders in the Yakima Valley - Part 1.</em> Yakima Valley Libraries: <span style="font-size:15px; color:#AD1128;">https://www.yvl.org/a-history-of-latinoa-leaders-in-the-yakima-valley-part-1/</span></li>
-                <li style="margin-top: 10px;"><strong>USDA - National Agricultural Statistics Service Homepage. (2022).</strong> Economic indicators and national crop production data indexes for hops and fruits: <span style="font-size:15px; color:#AD1128;">https://www.nass.usda.gov/</span></li>
-                <li style="margin-top: 10px;"><strong>QuickFacts: Yakima city, Washington. (2025).</strong> United States Census Bureau. Demographic profiles and official population indicators: <span style="font-size:15px; color:#AD1128;">https://www.census.gov/quickfacts/fact/table/yakimacitywashington/PST045225</span></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="controls">
-        <button class="nav-btn" onclick="changeSlide(-1)"><i class="fa-solid fa-arrow-left"></i> Previous</button>
-        <button class="nav-btn" onclick="goToHome()"><i class="fa-solid fa-house"></i> Home</button>
-        <button class="nav-btn" onclick="changeSlide(1)">Next <i class="fa-solid fa-arrow-right"></i></button>
-    </div>
-
-</div>
-
-<script>
-    let currentSlide = 1;
-    const totalSlides = 13;
-
-    function changeSlide(n) {
-        document.getElementById('slide' + currentSlide).classList.remove('active');
-        currentSlide += n;
-        if (currentSlide > totalSlides) currentSlide = 1;
-        if (currentSlide < 1) currentSlide = totalSlides;
-        document.getElementById('slide' + currentSlide).classList.add('active');
-        
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    function goToHome() {
-        document.getElementById('slide' + currentSlide).classList.remove('active');
-        currentSlide = 1;
-        document.getElementById('slide' + currentSlide).classList.add('active');
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === "ArrowRight") changeSlide(1);
-        if (e.key === "ArrowLeft") changeSlide(-1);
-        if (e.key === "Home") goToHome();
-    });
-</script>
-
-</body>
-</html>
+    <div class="slide-container"
