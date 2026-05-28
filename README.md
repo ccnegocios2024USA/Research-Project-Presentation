@@ -18,9 +18,3 @@ Migración Económica y Fronteras: En el caso de las minorías de origen hispano
 
 La Evolución de los Derechos y la Identidad: A partir de los movimientos civiles del siglo XX, las minorías transitaron de una exclusión total hacia la organización comunitaria, la defensa de sus derechos laborales y la preservación de sus identidades de origen (como sus lenguas, tradiciones y gastronomía), enriqueciendo la estructura social y multicultural de los Estados Unidos hoy en día.
 
-
-
-¿Cómo agregamos esto a tu archivo?
-
-Esta síntesis es el puente perfecto para explicar por qué decidiste investigar a los guerrerenses en Yakima, demostrando cómo un subgrupo específico refleja esa misma historia de trabajo, retos y resiliencia en el estado de Washington
-
